@@ -56,7 +56,7 @@ mnist_100labels_gan/
 │   └── report.tex
 └── main.py                   
 ```
-# Complete Project Plan (A → Z)
+# Complete Project Plan :
 
 -----------------------------------------------------
 PHASE 0 — SETUP & DATASET PREPARATION
@@ -159,18 +159,4 @@ Sections:
 - Combining supervised & unsupervised training  
 - Designing a reproducible ML pipeline  
 
-# Technologies Used
-- PyTorch  
-- Torchvision  
-- TensorBoard  
-- NumPy / Pandas  
-- Matplotlib / Seaborn  
-
-# Final Outcome
-A complete M2-level deep learning project that:
-- Demonstrates semi-supervised learning with only 100 labels
-- Implements SGAN with K+1 Discriminator
-- Produces significant performance gains over baseline
-- Provides a fully reproducible pipeline
-- Meets academic and industrial standards
 
