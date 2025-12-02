@@ -1,15 +1,15 @@
 # Semi-Supervised GAN for MNIST (100 Labels)
 Using GAN Discriminators as K+1 Classifiers for Low-Label Deep Learning
 
-# Badges
-[Python 3.10]  
-[PyTorch]  
-[Status: Ongoing]  
-[Dataset: MNIST]  
-[Labels: Only 100]  
-[Task: Semi-Supervised Learning]  
-[Model: SGAN (K+1 classes)]  
-[Reproducibility: Guaranteed]
+![Python 3.10](https://img.shields.io/badge/Python-3.10-blue)
+![PyTorch](https://img.shields.io/badge/Framework-PyTorch-red)
+![Status](https://img.shields.io/badge/Status-Ongoing-yellow)
+![Dataset](https://img.shields.io/badge/Dataset-MNIST-blue)
+![Labels](https://img.shields.io/badge/Labels-Only%20100-important)
+![Task](https://img.shields.io/badge/Task-Semi--Supervised%20Learning-green)
+![Model](https://img.shields.io/badge/Model-SGAN%20(K%2B1%20classes)-purple)
+![Reproducibility](https://img.shields.io/badge/Reproducibility-Guaranteed-brightgreen)
+
 
 # Project Overview
 This project aims to classify MNIST digits using only 100 labeled examples, leveraging a Semi-Supervised GAN (SGAN) inspired by Salimans et al., 2016.  
