@@ -1,5 +1,4 @@
 # Semi-Supervised GAN for MNIST (100 Labels)
-Using GAN Discriminators as K+1 Classifiers for Low-Label Deep Learning
 
 ![Python 3.10](https://img.shields.io/badge/Python-3.10-blue)
 ![PyTorch](https://img.shields.io/badge/Framework-PyTorch-red)
