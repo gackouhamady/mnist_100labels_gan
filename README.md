@@ -32,9 +32,9 @@ Using GAN Discriminators as K+1 Classifiers for Low-Label Deep Learning
 |---------------------|---------------------------------------------------------------------------------------------------|
 | **University**      | University Paris Cité                                                                             |
 | **Master Program**  | Machine Learning for Data Science (MLSD/AMSD)                                                     |
-| **Course**          | Deep Learning                                                                                    |
+| **Course**          | Deep Learning                                                                                     |
 | **Project Type**    | Semi-Supervised GAN (K+1 Discriminator) for low-label image classification                        |
-| **Supervision**     | (à compléter : encadrant universitaire / industriel)                                              |
+| **Supervisor**     | Blaise Hanczar                                                                                    |
 | **Students**        | Lounissi • Nirmal • Saillard • Gackou                                                             |
 | **Dataset**         | MNIST — 60,000 train / 10,000 test (100 labeled, 59,900 unlabeled for training)                   |
 | **Objective**       | Train and compare a Semi-Supervised GAN against a supervised CNN baseline using only 100 labels   |
