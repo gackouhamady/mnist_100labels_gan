@@ -10,6 +10,37 @@ Using GAN Discriminators as K+1 Classifiers for Low-Label Deep Learning
 ![Model](https://img.shields.io/badge/Model-SGAN%20(K%2B1%20classes)-purple)
 ![Reproducibility](https://img.shields.io/badge/Reproducibility-Guaranteed-brightgreen)
 
+<p align="center">
+  <img alt="University Paris Cité" src="https://img.shields.io/badge/University-Paris%20Cité-6f42c1?style=for-the-badge&logo=academia&logoColor=white">
+  <img alt="Master ML for Data Science" src="https://img.shields.io/badge/Master-Machine%20Learning%20for%20Data%20Science-1976D2?style=for-the-badge&logo=python&logoColor=white">
+  <img alt="Deep Learning Project" src="https://img.shields.io/badge/Project-Deep%20Learning%20-%20Semi--Supervised%20GAN-FF9800?style=for-the-badge&logo=jupyter&logoColor=white">
+  <img alt="Academic Year" src="https://img.shields.io/badge/Year-2025%2F2026-009688?style=for-the-badge&logo=googlecalendar&logoColor=white">
+</p>
+
+---
+
+<p align="center">
+  <strong>Master 2 — Machine Learning for Data Science</strong><br>
+  <strong>Project: Semi-Supervised GAN for MNIST (100 Labels)</strong>
+</p>
+
+---
+
+## Project Information  
+
+| **Category**        | **Details**                                                                                       |
+|---------------------|---------------------------------------------------------------------------------------------------|
+| **University**      | University Paris Cité                                                                             |
+| **Master Program**  | Machine Learning for Data Science (MLSD/AMSD)                                                     |
+| **Course**          | Deep Learning                                                                                    |
+| **Project Type**    | Semi-Supervised GAN (K+1 Discriminator) for low-label image classification                        |
+| **Supervision**     | (à compléter : encadrant universitaire / industriel)                                              |
+| **Students**        | Lounissi • Nirmal • Saillard • Gackou                                                             |
+| **Dataset**         | MNIST — 60,000 train / 10,000 test (100 labeled, 59,900 unlabeled for training)                   |
+| **Objective**       | Train and compare a Semi-Supervised GAN against a supervised CNN baseline using only 100 labels   |
+| **Academic Year**   | 2025/2026                                                                                         |
+
+---
 
 # Project Overview
 This project aims to classify MNIST digits using only 100 labeled examples, leveraging a Semi-Supervised GAN (SGAN) inspired by Salimans et al., 2016.  
@@ -54,7 +85,7 @@ mnist_100labels_gan/
 │   └── results.json
 ├── report/
 │   └── report.tex
-└── main.py                   
+└── main.py                                    
 ```
 # Complete Project Plan :
 
