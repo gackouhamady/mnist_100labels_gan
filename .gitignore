@@ -38,6 +38,12 @@ MNIST/
 # -------------------------
 experiments/
 runs/
+reports/*
+# Except .txt files
+!reports/*.txt
+
+# Except .pdf files
+!reports/*.pdf
 logs/
 checkpoints/
 *.log
