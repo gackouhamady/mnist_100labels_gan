@@ -40,7 +40,7 @@ experiments/
 runs/
 reports/*
 # Except .txt files
-!reports/*.txt
+!reports/*.tex
 
 # Except .pdf files
 !reports/*.pdf

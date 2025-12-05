@@ -1,0 +1,199 @@
+\documentclass{article}
+\usepackage[preprint]{neurips_2024}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{amsmath, amsfonts}
+\usepackage{nicefrac}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{graphicx}
+
+% ============================================================
+% TITLE + AUTHORS
+% ============================================================
+
+\title{Semi-Supervised GANs for MNIST Classification with 100 Labels:\\
+An Experimental Study of the K+1 Discriminator and Feature Matching}
+
+\author{
+  Lounissi \\
+  Université Paris Cité \\
+  \texttt{firstname.lastname@example.com}
+  \And
+  Nirmal \\
+  Université Paris Cité \\
+  \texttt{firstname.lastname@example.com}
+  \And
+  Saillard \\
+  Université Paris Cité \\
+  \texttt{firstname.lastname@example.com}
+  \And
+  Hamady Gackou \\
+  Université Paris Cité \\
+  \texttt{hamady.gackou@example.com}
+}
+
+\begin{document}
+
+\maketitle
+
+% ============================================================
+% ABSTRACT
+% ============================================================
+
+\begin{abstract}
+We investigate semi-supervised classification on MNIST using only 100 labeled samples, combining a supervised CNN baseline with a Semi-Supervised GAN (SGAN) framework using a K+1 classifier and feature matching.  
+This template provides the structure of the report; the placeholder text should be replaced by the project team.
+\end{abstract}
+
+% ============================================================
+% 1. INTRODUCTION
+% ============================================================
+
+\section{Introduction}
+
+% -- Replace with your content --
+This section introduces the low-label learning problem on MNIST, the motivation for semi-supervised GANs, and an overview of the approach.
+Discuss the challenge of using only 100 labels, existing semi-supervised methods, and why SGAN is relevant.
+
+% ============================================================
+% 2. BASELINE METHOD
+% ============================================================
+
+\section{Baseline Method}
+
+% -- Replace --
+Describe the supervised CNN baseline used for comparison.
+Include the architecture (conv–relu–pool), training setup (epochs, optimizer, augmentation), and initial accuracy.
+This baseline serves as the reference to quantify SGAN improvements.
+
+% ============================================================
+% 3. SGAN METHODOLOGY
+% ============================================================
+
+\section{SGAN Methodology}
+
+The Semi-Supervised GAN extends the discriminator into a $(K+1)$-class classifier, where the extra class corresponds to generated samples.  
+The generator is trained using feature matching for stability.
+
+\subsection{K+1 Classifier}
+
+% -- Replace --
+Explain the decomposition:
+\[
+p_D(y|x) = \begin{cases}
+p(\text{digit}=k|x), & k \in \{1,\dots,10\} \\
+p(\text{fake}|x), & k = 11.
+\end{cases}
+\]
+Discuss supervised loss on labeled data and unsupervised loss on unlabeled data.
+
+\subsection{Feature Matching}
+
+% -- Replace --
+Describe the generator loss based on matching intermediate feature statistics instead of fooling the discriminator directly:
+\[
+\mathcal{L}_G = \left\| \mathbb{E}_{x \sim p_\text{data}} f(x) - \mathbb{E}_{z \sim p(z)} f(G(z)) \right\|_2^2.
+\]
+
+% ============================================================
+% 4. IMPLEMENTATION DETAILS
+% ============================================================
+
+\section{Implementation Details}
+
+% -- Replace --
+List details needed for reproducibility:
+
+- Dataset preparation (selection of 100 labeled samples)  
+- CNN architecture hyperparameters  
+- SGAN training hyperparameters  
+- Optimizers (Adam), batch sizes  
+- Training duration  
+- Hardware used (GPU/CPU)  
+- Random seed setup  
+
+% ============================================================
+% 5. EXPERIMENTS AND RESULTS
+% ============================================================
+
+\section{Experiments and Results}
+
+% -- Replace --
+Include classification accuracy of:
+
+1. Supervised CNN baseline  
+2. SGAN (K+1 classifier only)  
+3. SGAN (K+1 + Feature Matching)
+
+Insert tables and plots of accuracy curves if needed.
+
+Example placeholder:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lcc}
+\toprule
+Method & Accuracy (\%) \\
+\midrule
+Baseline CNN & XX.X \\
+SGAN (K+1) & XX.X \\
+SGAN (K+1 + FM) & XX.X \\
+\bottomrule
+\end{tabular}
+\caption{Placeholder results. Replace with real numbers.}
+\end{table}
+
+% ============================================================
+% 6. DISCUSSION
+% ============================================================
+
+\section{Discussion}
+
+% -- Replace --
+Interpret why SGAN improves over the baseline.
+Discuss stability issues, unlabeled data usage, learning dynamics, and potential limitations.
+
+% ============================================================
+% 7. CONCLUSION
+% ============================================================
+
+\section{Conclusion}
+
+% -- Replace --
+Summarize contributions:
+- implementation of SGAN with K+1 classifier  
+- effective use of unlabeled data  
+- comparison with supervised baseline  
+- improvements observed  
+
+Suggest future extensions.
+
+% ============================================================
+% 8. APPENDIX
+% ============================================================
+
+\appendix
+
+\section*{Appendix: Code Excerpts}
+
+% -- Replace --
+Include short commented code excerpts:
+- CNN architecture
+- Discriminator K+1 modification
+- SGAN training loop  
+Avoid long code dumps; keep it readable.
+
+% ============================================================
+% REFERENCES
+% ============================================================
+
+\medskip
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}
