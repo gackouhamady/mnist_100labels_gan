@@ -1,18 +1,53 @@
 """
-training package
+Training package for the MNIST 100-label Semi-Supervised GAN project.
 
-This package exposes the training utilities:
-- train_baseline : train a supervised CNN on 100 labeled samples
-- train_semisup_gan : train the Semi-Supervised GAN (K+1 classifier)
-- evaluate_classifier : evaluate any trained classifier on MNIST test set
+This module exposes:
+- Baseline supervised training utilities
+- Semi-supervised GAN training components
+- Evaluation helpers
 """
 
-from .train_baseline import train_baseline_model
-from .train_semisup_gan import train_semisupervised_gan
-from .evaluate_classifier import evaluate_model
+# ------------------------------------------------------------------
+# Baseline supervised CNN training
+# ------------------------------------------------------------------
+from .train_baseline import (
+    LabeledMNIST as BaselineLabeledMNIST,
+    train as train_baseline_epoch,
+    evaluate as evaluate_baseline
+)
 
+# ------------------------------------------------------------------
+# Semi-supervised GAN training
+# ------------------------------------------------------------------
+from .train_semisup_gan import (
+    LabeledMNIST as SGANLabeledMNIST,
+    UnlabeledMNIST,
+    feature_matching_loss,
+    evaluate_classifier,
+)
+
+# ------------------------------------------------------------------
+# Discriminator evaluation utilities
+# ------------------------------------------------------------------
+from .evaluate_classifier import (
+    evaluate as evaluate_discriminator,
+)
+
+# ------------------------------------------------------------------
+# Public API
+# ------------------------------------------------------------------
 __all__ = [
-    "train_baseline_model",
-    "train_semisupervised_gan",
-    "evaluate_model",
+    # Baseline
+    "BaselineLabeledMNIST",
+    "train_baseline_epoch",
+    "evaluate_baseline",
+
+    # SGAN
+    "SGANLabeledMNIST",
+    "UnlabeledMNIST",
+    "feature_matching_loss",
+    "evaluate_classifier",
+
+    # Evaluation
+    "evaluate_discriminator",
 ]

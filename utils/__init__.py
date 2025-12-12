@@ -1,21 +1,27 @@
 """
 Utility package for the MNIST 100-label SGAN project.
-
-Exposes:
-    - seed_everything   (from seed.py)
-    - accuracy, compute_confusion_matrix, ClassificationMetrics (from metrics.py)
-    - plot_images, plot_losses (from vis.py)
 """
 
-from .seed import seed_everything
-from .metrics import accuracy, compute_confusion_matrix, ClassificationMetrics
-from .vis import plot_images, plot_losses
+from .seed import set_seed
+from .metrics import (
+    accuracy,
+    accuracy_from_logits,
+    compute_confusion_matrix,
+    print_confusion_matrix,
+)
+from .vis import (
+    show_images,
+    generate_and_show,
+    generate_and_save,
+)
 
 __all__ = [
-    "seed_everything",
+    "set_seed",
     "accuracy",
+    "accuracy_from_logits",
     "compute_confusion_matrix",
-    "ClassificationMetrics",
-    "plot_images",
-    "plot_losses",
+    "print_confusion_matrix",
+    "show_images",
+    "generate_and_show",
+    "generate_and_save",
 ]

@@ -1,18 +1,13 @@
 """
 Model package for the MNIST 100-label SGAN project.
-
-Exposes:
-    - CNNBaseline
-    - Discriminator
-    - Generator
 """
 
-from .cnn_baseline import CNNBaseline
-from .gan_discriminator import Discriminator
+from .cnn_baseline import BaselineCNN
 from .gan_generator import Generator
+from .gan_discriminator import DiscriminatorKPlus1
 
 __all__ = [
-    "CNNBaseline",
-    "Discriminator",
+    "BaselineCNN",
     "Generator",
+    "DiscriminatorKPlus1",
 ]
