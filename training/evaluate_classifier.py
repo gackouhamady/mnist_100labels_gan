@@ -3,6 +3,11 @@ from torchvision import datasets, transforms
 from torch.utils.data import DataLoader
 import os
 import sys
+<<<<<<< HEAD
+=======
+import numpy as np
+import matplotlib.pyplot as plt
+>>>>>>> 49fecc8 (Initial implementation of Semi-Supervised GAN for MNIST (100 labels))
 
 # Import model + metrics
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -55,14 +60,58 @@ def evaluate(model_path, batch_size=256, device="cpu"):
     accuracy = correct / total
     print(f"Test Accuracy of GAN Discriminator (as classifier): {accuracy:.4f}")
 
+<<<<<<< HEAD
     # ----------------------------
     # Optional: Confusion Matrix
+=======
+    # -------------------------------------------------
+    # Save accuracy to file
+    # -------------------------------------------------
+    os.makedirs("./experiments", exist_ok=True)
+    with open("./experiments/results_sgan.txt", "w") as f:
+        f.write(f"Final Test Accuracy (SGAN): {accuracy:.4f}\n")
+
+    # ----------------------------
+    # Confusion Matrix
+>>>>>>> 49fecc8 (Initial implementation of Semi-Supervised GAN for MNIST (100 labels))
     # ----------------------------
     print("\nComputing confusion matrix…")
     cm = compute_confusion_matrix(model, test_loader, device)
     print_confusion_matrix(cm)
 
+<<<<<<< HEAD
     return accuracy
+=======
+    # Save confusion matrix to file
+    os.makedirs("./experiments", exist_ok=True)
+
+    np.savetxt(
+        "./experiments/confusion_matrix_sgan.txt",
+        cm,
+        fmt="%d"
+    )
+
+    # -------------------------------------------------
+    # Save confusion matrix as PNG heatmap
+    # -------------------------------------------------
+    os.makedirs("./experiments", exist_ok=True)
+
+    plt.figure(figsize=(8, 8))
+    plt.imshow(cm, interpolation="nearest")
+    plt.title("Confusion Matrix – SGAN (100 labels)")
+    plt.colorbar()
+
+    tick_marks = np.arange(10)
+    plt.xticks(tick_marks, tick_marks)
+    plt.yticks(tick_marks, tick_marks)
+
+    plt.xlabel("Predicted label")
+    plt.ylabel("True label")
+
+    plt.tight_layout()
+    plt.savefig("./experiments/confusion_matrix_sgan.png")
+    plt.close()
+>>>>>>> 49fecc8 (Initial implementation of Semi-Supervised GAN for MNIST (100 labels))
 
 
 # -----------------------------------------------------------------------------

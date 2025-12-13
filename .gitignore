@@ -18,7 +18,11 @@ venv/
 # Jupyter
 .ipynb_checkpoints/
 *.ipynb_checkpoints
+<<<<<<< HEAD
 
+=======
+*.ipynb
+>>>>>>> 49fecc8 (Initial implementation of Semi-Supervised GAN for MNIST (100 labels))
 
 # -------------------------
 # DATA & DATASETS
@@ -36,7 +40,11 @@ MNIST/
 # -------------------------
 # EXPERIMENT OUTPUTS
 # -------------------------
+<<<<<<< HEAD
 experiments/
+=======
+
+>>>>>>> 49fecc8 (Initial implementation of Semi-Supervised GAN for MNIST (100 labels))
 runs/
 reports/*
 # Except .txt files
@@ -77,3 +85,16 @@ Thumbs.db
 figures/
 generated/
 samples/
+<<<<<<< HEAD
+=======
+
+# =========================
+# ALLOW EXPERIMENT FIGURES
+# =========================
+!experiments/
+!experiments/*.png
+!experiments/*.jpg
+!experiments/*.jpeg
+!experiments/*.svg
+!experiments/*.txt
+>>>>>>> 49fecc8 (Initial implementation of Semi-Supervised GAN for MNIST (100 labels))
