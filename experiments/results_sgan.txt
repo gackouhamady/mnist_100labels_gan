@@ -1,0 +1,1 @@
+Final Test Accuracy (SGAN): 0.9687
