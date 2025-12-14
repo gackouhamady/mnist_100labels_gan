@@ -1,5 +1,9 @@
 \documentclass{article}
+<<<<<<< HEAD
 \usepackage[preprint]{neurips_2024}
+=======
+% \usepackage[preprint]{neurips_2024}
+>>>>>>> 49fecc8 (Initial implementation of Semi-Supervised GAN for MNIST (100 labels))
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -7,8 +11,14 @@
 \usepackage{url}
 \usepackage{booktabs}
 \usepackage{amsmath, amsfonts}
+<<<<<<< HEAD
 \usepackage{nicefrac}
 \usepackage{microtype}
+=======
+% \usepackage{nicefrac}
+
+%\usepackage{microtype}
+>>>>>>> 49fecc8 (Initial implementation of Semi-Supervised GAN for MNIST (100 labels))
 \usepackage{xcolor}
 \usepackage{graphicx}
 
@@ -17,6 +27,7 @@
 % ============================================================
 
 \title{Semi-Supervised GANs for MNIST Classification with 100 Labels:\\
+<<<<<<< HEAD
 An Experimental Study of the K+1 Discriminator and Feature Matching}
 
 \author{
@@ -29,6 +40,20 @@ An Experimental Study of the K+1 Discriminator and Feature Matching}
   \texttt{firstname.lastname@example.com}
   \And
   Saillard \\
+=======
+An Experimental Study of the $(K+1)$  Discriminator and Feature Matching}
+
+\author{
+  Manel Lounissi \\
+  Université Paris Cité \\
+  \texttt{firstname.lastname@example.com}
+  \And
+  Sandeep-Singh Nirmal \\
+  Université Paris Cité \\
+  \texttt{firstname.lastname@example.com}
+  \And
+  Brice Saillard \\
+>>>>>>> 49fecc8 (Initial implementation of Semi-Supervised GAN for MNIST (100 labels))
   Université Paris Cité \\
   \texttt{firstname.lastname@example.com}
   \And
@@ -46,8 +71,12 @@ An Experimental Study of the K+1 Discriminator and Feature Matching}
 % ============================================================
 
 \begin{abstract}
+<<<<<<< HEAD
 We investigate semi-supervised classification on MNIST using only 100 labeled samples, combining a supervised CNN baseline with a Semi-Supervised GAN (SGAN) framework using a K+1 classifier and feature matching.  
 This template provides the structure of the report; the placeholder text should be replaced by the project team.
+=======
+Training deep neural networks with very limited labeled data remains a major challenge. In this work, we study semi-supervised learning on the MNIST dataset using only 100 labeled samples. We first establish a supervised convolutional neural network (CNN) baseline trained exclusively on these labels. We then implement a Semi-Supervised Generative Adversarial Network (SGAN) following the framework of Salimans et al., where the discriminator is extended into a $(K+1)$-class classifier and the generator is trained using feature matching. Our experiments show that the SGAN substantially improves classification performance compared to the purely supervised baseline, reaching nearly 97\% test accuracy while relying on only 100 labeled examples and the remaining unlabeled data.
+>>>>>>> 49fecc8 (Initial implementation of Semi-Supervised GAN for MNIST (100 labels))
 \end{abstract}
 
 % ============================================================
@@ -56,9 +85,19 @@ This template provides the structure of the report; the placeholder text should 
 
 \section{Introduction}
 
+<<<<<<< HEAD
 % -- Replace with your content --
 This section introduces the low-label learning problem on MNIST, the motivation for semi-supervised GANs, and an overview of the approach.
 Discuss the challenge of using only 100 labels, existing semi-supervised methods, and why SGAN is relevant.
+=======
+Deep learning models typically require large amounts of labeled data to achieve strong performance. However, in many real-world scenarios, acquiring labeled samples is expensive or impractical, while unlabeled data is abundant. This setting motivates the development of semi-supervised learning methods that can effectively leverage unlabeled data to improve performance.
+
+The MNIST handwritten digit dataset is a classical benchmark for classification tasks. While state-of-the-art supervised methods can achieve near-perfect accuracy when trained on the full labeled dataset, performance drops drastically when the number of labeled samples is severely reduced. In this project, we focus on an extreme low-label regime where only 100 labeled MNIST images are available.
+
+Generative Adversarial Networks (GANs) have proven to be powerful tools not only for data generation but also for representation learning. Salimans et al. introduced several improved training techniques for GANs, including a semi-supervised formulation where the discriminator is modified into a $(K+1)$-class classifier. This approach allows the discriminator to perform classification while simultaneously distinguishing real samples from generated ones.
+
+In this work, we compare a purely supervised CNN baseline trained on 100 labeled samples with a Semi-Supervised GAN (SGAN) using a $K+1$ discriminator and feature matching. We demonstrate that the SGAN framework significantly outperforms the baseline by exploiting unlabeled data.
+>>>>>>> 49fecc8 (Initial implementation of Semi-Supervised GAN for MNIST (100 labels))
 
 % ============================================================
 % 2. BASELINE METHOD
@@ -66,10 +105,16 @@ Discuss the challenge of using only 100 labels, existing semi-supervised methods
 
 \section{Baseline Method}
 
+<<<<<<< HEAD
 % -- Replace --
 Describe the supervised CNN baseline used for comparison.
 Include the architecture (conv–relu–pool), training setup (epochs, optimizer, augmentation), and initial accuracy.
 This baseline serves as the reference to quantify SGAN improvements.
+=======
+As a reference, we first train a supervised convolutional neural network using only the 100 labeled MNIST samples. The architecture consists of a small CNN with convolutional layers followed by ReLU activations and pooling operations, and a final fully connected layer producing class probabilities over the 10 digit classes.
+
+The model is trained using the cross-entropy loss and the Adam optimizer. Due to the extremely limited amount of labeled data, the baseline model is prone to overfitting and struggles to generalize to the test set. This baseline serves as a lower bound for performance and provides a point of comparison to quantify the benefits of semi-supervised learning.
+>>>>>>> 49fecc8 (Initial implementation of Semi-Supervised GAN for MNIST (100 labels))
 
 % ============================================================
 % 3. SGAN METHODOLOGY
@@ -77,6 +122,7 @@ This baseline serves as the reference to quantify SGAN improvements.
 
 \section{SGAN Methodology}
 
+<<<<<<< HEAD
 The Semi-Supervised GAN extends the discriminator into a $(K+1)$-class classifier, where the extra class corresponds to generated samples.  
 The generator is trained using feature matching for stability.
 
@@ -100,12 +146,38 @@ Describe the generator loss based on matching intermediate feature statistics in
 \mathcal{L}_G = \left\| \mathbb{E}_{x \sim p_\text{data}} f(x) - \mathbb{E}_{z \sim p(z)} f(G(z)) \right\|_2^2.
 \]
 
+=======
+The Semi-Supervised GAN extends the standard GAN framework by modifying the discriminator into a classifier with $K+1$ outputs, where $K=10$ corresponds to the real digit classes and the additional class represents generated (fake) samples. The generator is trained using feature matching to improve training stability.
+
+\subsection{K+1 Classifier}
+
+In the SGAN framework, the discriminator outputs a probability distribution over $K+1$ classes:
+\[
+p_D(y|x) = \begin{cases}
+p(\text{digit}=k|x), & k \in \{0,\dots,9\} \\
+p(\text{fake}|x), & k = 10.
+\end{cases}
+\]
+
+For labeled data, a standard supervised cross-entropy loss is applied over the real classes. For unlabeled real data, the discriminator is encouraged to assign low probability to the \emph{fake} class, while generated samples are encouraged to be classified as fake. This combination enables the model to leverage unlabeled data during training.
+
+\subsection{Feature Matching}
+
+Instead of training the generator to directly fool the discriminator, we adopt the feature matching objective proposed by Salimans et al. The generator aims to match the statistics of intermediate feature representations of real and generated samples:
+\[
+\mathcal{L}_G = \left\| \mathbb{E}_{x \sim p_{\text{data}}} f(x) - \mathbb{E}_{z \sim p(z)} f(G(z)) \right\|_2^2.
+\]
+
+This objective stabilizes training and prevents the generator from exploiting weaknesses in the discriminator, leading to more meaningful learned representations.
+
+>>>>>>> 49fecc8 (Initial implementation of Semi-Supervised GAN for MNIST (100 labels))
 % ============================================================
 % 4. IMPLEMENTATION DETAILS
 % ============================================================
 
 \section{Implementation Details}
 
+<<<<<<< HEAD
 % -- Replace --
 List details needed for reproducibility:
 
@@ -116,6 +188,11 @@ List details needed for reproducibility:
 - Training duration  
 - Hardware used (GPU/CPU)  
 - Random seed setup  
+=======
+All experiments are implemented in Python using PyTorch. From the MNIST training set, 100 labeled samples are selected uniformly across classes (10 per digit), while the remaining samples are treated as unlabeled data.
+
+The SGAN is trained for 50 epochs using the Adam optimizer with a learning rate of $2 \times 10^{-4}$ for both the generator and the discriminator. The batch size is set to 64. Experiments are run on CPU hardware. To ensure reproducibility, we log the accuracy at each epoch and export the final confusion matrix and plots.
+>>>>>>> 49fecc8 (Initial implementation of Semi-Supervised GAN for MNIST (100 labels))
 
 % ============================================================
 % 5. EXPERIMENTS AND RESULTS
@@ -123,6 +200,7 @@ List details needed for reproducibility:
 
 \section{Experiments and Results}
 
+<<<<<<< HEAD
 % -- Replace --
 Include classification accuracy of:
 
@@ -147,6 +225,36 @@ SGAN (K+1 + FM) & XX.X \\
 \end{tabular}
 \caption{Placeholder results. Replace with real numbers.}
 \end{table}
+=======
+Figure~\ref{fig:accuracy\_curve} shows the classification accuracy of the SGAN discriminator on the MNIST test set over training epochs. The model improves rapidly during the first epochs and stabilizes around an accuracy close to 97\%.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.85\linewidth]{../experiments/accuracy\_curve.png}
+\caption{Test accuracy of the SGAN discriminator over training epochs (100 labeled samples).}
+\label{fig:accuracy\_curve}
+\end{figure}
+
+The final test accuracy of the SGAN reaches nearly 97\%, substantially outperforming the supervised baseline trained on the same 100 labeled samples by leveraging the remaining unlabeled data.
+
+Figure~\ref{fig:confusion} presents the confusion matrix of the SGAN classifier. Most predictions lie on the diagonal, indicating strong classification performance. Remaining errors correspond to visually similar digits, which is expected on MNIST (e.g., occasional confusions among 3/5 or 8/9).
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.85\linewidth]{../experiments/confusion\_matrix\_sgan.png}
+\caption{Confusion matrix of the SGAN classifier on the MNIST test set.}
+\label{fig:confusion}
+\end{figure}
+
+Generated samples produced by the generator are visually coherent and resemble real handwritten digits, as illustrated in Figure~\ref{fig:samples}.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.55\linewidth]{../experiments/gan\_samples\_grid.png}
+\caption{Samples generated by the SGAN generator after training.}
+\label{fig:samples}
+\end{figure}
+>>>>>>> 49fecc8 (Initial implementation of Semi-Supervised GAN for MNIST (100 labels))
 
 % ============================================================
 % 6. DISCUSSION
@@ -154,9 +262,15 @@ SGAN (K+1 + FM) & XX.X \\
 
 \section{Discussion}
 
+<<<<<<< HEAD
 % -- Replace --
 Interpret why SGAN improves over the baseline.
 Discuss stability issues, unlabeled data usage, learning dynamics, and potential limitations.
+=======
+The results show that semi-supervised learning with SGANs is highly effective in a low-label regime. By incorporating unlabeled data through the $K+1$ discriminator, the model learns decision boundaries that better separate real digit classes, even when supervised information is extremely limited. Feature matching further stabilizes training by preventing the generator from collapsing into trivial solutions, which improves the quality of representations learned by the discriminator.
+
+Despite training on CPU, the SGAN converges reliably within 50 epochs and reaches strong performance. Remaining errors are concentrated on ambiguous digit pairs, reflecting intrinsic difficulty rather than systematic failure.
+>>>>>>> 49fecc8 (Initial implementation of Semi-Supervised GAN for MNIST (100 labels))
 
 % ============================================================
 % 7. CONCLUSION
@@ -164,6 +278,7 @@ Discuss stability issues, unlabeled data usage, learning dynamics, and potential
 
 \section{Conclusion}
 
+<<<<<<< HEAD
 % -- Replace --
 Summarize contributions:
 - implementation of SGAN with K+1 classifier  
@@ -187,6 +302,9 @@ Include short commented code excerpts:
 - Discriminator K+1 modification
 - SGAN training loop  
 Avoid long code dumps; keep it readable.
+=======
+We implemented and evaluated a Semi-Supervised GAN for MNIST classification using only 100 labeled samples. Compared to a supervised CNN baseline, the SGAN achieves a large improvement by exploiting the unlabeled portion of the training set. Our experiments confirm the effectiveness of the $K+1$ discriminator and the feature matching loss proposed by Salimans et al. Future work could explore stronger architectures, data augmentation, or extensions to more complex datasets beyond MNIST.
+>>>>>>> 49fecc8 (Initial implementation of Semi-Supervised GAN for MNIST (100 labels))
 
 % ============================================================
 % REFERENCES
