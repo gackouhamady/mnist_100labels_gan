@@ -1,36 +1,31 @@
 # Semi-Supervised GAN for MNIST with 100 Labels
 
 <p align="center">
-  <img alt="University Paris Cité" src="https://img.shields.io/badge/University-Paris%20Cité-6f42c1?style=for-the-badge&logo=academia&logoColor=white">
-  <img alt="Master ML for Data Science" src="https://img.shields.io/badge/Master-Machine%20Learning%20for%20Data%20Science-1976D2?style=for-the-badge&logo=python&logoColor=white">
-  <img alt="Deep Learning Project" src="https://img.shields.io/badge/Project-Deep%20Learning%20-%20Semi--Supervised%20GAN-FF9800?style=for-the-badge&logo=jupyter&logoColor=white">
-  <img alt="Academic Year" src="https://img.shields.io/badge/Year-2025%2F2026-009688?style=for-the-badge&logo=googlecalendar&logoColor=white">
+<img alt="University Paris Cité" src="[https://img.shields.io/badge/University-Paris%20Cité-6f42c1?style=for-the-badge&logo=academia&logoColor=white](https://img.shields.io/badge/University-Paris%20Cité-6f42c1?style=for-the-badge&logo=academia&logoColor=white)">
+<img alt="Master ML for Data Science" src="[https://img.shields.io/badge/Master-Machine%20Learning%20for%20Data%20Science-1976D2?style=for-the-badge&logo=python&logoColor=white](https://img.shields.io/badge/Master-Machine%20Learning%20for%20Data%20Science-1976D2?style=for-the-badge&logo=python&logoColor=white)">
+<img alt="Deep Learning Project" src="[https://img.shields.io/badge/Project-Deep%20Learning%20-%20Semi--Supervised%20GAN-FF9800?style=for-the-badge&logo=jupyter&logoColor=white](https://img.shields.io/badge/Project-Deep%20Learning%20-%20Semi--Supervised%20GAN-FF9800?style=for-the-badge&logo=jupyter&logoColor=white)">
+<img alt="Academic Year" src="[https://img.shields.io/badge/Year-2025%2F2026-009688?style=for-the-badge&logo=googlecalendar&logoColor=white](https://img.shields.io/badge/Year-2025%2F2026-009688?style=for-the-badge&logo=googlecalendar&logoColor=white)">
 </p>
 
-***
+---
 
 ## Project Information
 
-**Université Paris Cité — Master 2 Machine Learning for Data Science**  
-**Course:** Deep Learning  
+**Université Paris Cité — Master 2 Machine Learning for Data Science** **Course:** Deep Learning
+
 **Project:** Semi-Supervised GAN (K+1 Discriminator) for Low-Label Image Classification[1]
 
 **Team**
 
-- Manel LOUNISSI – *manel2.lounissi@gmail.com*  
-- Sandeep-Singh NIRMAL – *nirmalsinghsandeep@gmail.com*  
-- Brice SAILLARD – *brice.saillard.bs@gmail.com*  
-- Hamady GACKOU – *hamady.gackou@etu.u-paris.fr*  
-
-**Supervisor:** Blaise Hanczar[1]
+* Manel LOUNISSI – *manel2.lounissi@gmail.com* - Sandeep-Singh NIRMAL – *nirmalsinghsandeep@gmail.com* - Brice SAILLARD – *brice.saillard.bs@gmail.com* - Hamady GACKOU – *hamady.gackou@etu.u-paris.fr* **Supervisor:** Blaise Hanczar[1]
 
 **Dataset & Setting**
 
-- MNIST: 60 000 train / 10 000 test  
-- Only **100 labeled samples** (10 per class) are used for supervised learning  
-- Remaining **59 900** training samples are treated as **unlabeled**[1]
+* MNIST: 60 000 train / 10 000 test
+* Only **100 labeled samples** (10 per class) are used for supervised learning
+* Remaining **59 900** training samples are treated as **unlabeled**[1]
 
-***
+---
 
 ## Problem & Approach
 
@@ -38,14 +33,16 @@ Labeling large datasets is costly, while unlabeled data is abundant. In this pro
 
 The key idea follows **Salimans et al., “Improved Techniques for Training GANs” (NeurIPS 2016)**:
 
-- The **discriminator** is turned into a **K+1 classifier**:
-  - Classes 0–9: real digits  
-  - Class 10: fake (generated) samples[1]
-- The **generator** is trained with **feature matching**, making its objective to match intermediate feature statistics of real data instead of directly fooling the discriminator.[1]
+* The **discriminator** is turned into a **K+1 classifier**:
+* Classes 0–9: real digits
+* Class 10: fake (generated) samples[1]
+
+
+* The **generator** is trained with **feature matching**, making its objective to match intermediate feature statistics of real data instead of directly fooling the discriminator.[1]
 
 This allows the model to **leverage the structure of unlabeled data** in addition to the 100 labels.
 
-***
+---
 
 ## Model Architectures
 
@@ -53,36 +50,38 @@ This allows the model to **leverage the structure of unlabeled data** in additio
 
 A compact CNN trained **only on the 100 labeled samples** serves as the supervised baseline.[1]
 
-- Convolutional feature extractor (2 conv + ReLU + max-pooling blocks)
-- Fully-connected classifier:
-  - Flatten  
-  - Linear → 128 + ReLU + Dropout(0.3)  
-  - Linear → 10 logits (digits 0–9)[1]
+* Convolutional feature extractor (2 conv + ReLU + max-pooling blocks)
+* Fully-connected classifier:
+* Flatten
+* Linear → 128 + ReLU + Dropout(0.3)
+* Linear → 10 logits (digits 0–9)[1]
+
+
 
 ### SGAN Discriminator (K+1 Classes)
 
 The **discriminator** outputs **K+1 logits**:
 
-- 10 logits for real classes (0–9)  
-- 1 logit for the “fake” class[1]
+* 10 logits for real classes (0–9)
+* 1 logit for the “fake” class[1]
 
 Architecture:
 
-- Conv2d(1 → 64) + LeakyReLU + MaxPool2d  
-- Conv2d(64 → 128) + LeakyReLU + MaxPool2d  
-- Flatten → Linear(128×7×7 → 256) + LeakyReLU  
-- Final Linear(256 → 11)  
-- Optionally returns intermediate **features** for feature matching[1]
+* Conv2d(1 → 64) + LeakyReLU + MaxPool2d
+* Conv2d(64 → 128) + LeakyReLU + MaxPool2d
+* Flatten → Linear(128×7×7 → 256) + LeakyReLU
+* Final Linear(256 → 11)
+* Optionally returns intermediate **features** for feature matching[1]
 
 ### SGAN Generator
 
-The **generator** maps a latent vector \(z \sim \mathcal{N}(0, I)\) to a 28×28 MNIST image:[1]
+The **generator** maps a latent vector  to a 28×28 MNIST image:[1]
 
-- Linear(z_dim → 128×7×7) + ReLU  
-- Unflatten → ConvTranspose2d blocks upsampling to 1×28×28  
-- Final activation: Tanh[1]
+* Linear(z_dim → 128×7×7) + ReLU
+* Unflatten → ConvTranspose2d blocks upsampling to 1×28×28
+* Final activation: Tanh[1]
 
-***
+---
 
 ## Training Objectives
 
@@ -90,14 +89,10 @@ The **generator** maps a latent vector \(z \sim \mathcal{N}(0, I)\) to a 28×28 
 
 The discriminator minimizes a combination of:
 
-- **Supervised loss** \(L_{\text{sup}}\): cross-entropy on labeled samples using the first K logits (0–9)  
-- **Unsupervised loss** \(L_{\text{unsup}}\): real vs fake separation on unlabeled real data and generated data[1]
+* **Supervised loss** : cross-entropy on labeled samples using the first K logits (0–9)
+* **Unsupervised loss** : real vs fake separation on unlabeled real data and generated data[1]
 
 Total discriminator loss:
-
-\[
-L_D = L_{\text{sup}} + L_{\text{unsup, real}} + L_{\text{unsup, fake}}
-\]
 
 Implementation uses softmax over the K+1 logits, and constructs real/fake probabilities from the (K+1)-th logit.[1]
 
@@ -105,63 +100,68 @@ Implementation uses softmax over the K+1 logits, and constructs real/fake probab
 
 The generator is trained **only** with **feature matching**:[1]
 
-\[
-L_G = \left\| \mathbb{E}_{x \sim p_{\text{data}}} f(x) - \mathbb{E}_{z \sim p(z)} f(G(z)) \right\|_2^2
-\]
+where  are intermediate features from the discriminator. This stabilizes training and avoids mode collapse.[1]
 
-where \(f(\cdot)\) are intermediate features from the discriminator. This stabilizes training and avoids mode collapse.[1]
-
-***
+---
 
 ## Experimental Setup
 
-- Dataset: MNIST, with **100 labeled** and **59 900 unlabeled** training images[1]
-- Hardware: single **NVIDIA L4 GPU**, CUDA enabled[1]
-- Framework: **PyTorch**  
-- Reproducibility:
-  - Fixed random seed (Python, NumPy, torch, CUDA, deterministic cuDNN)[1]
-- Data loaders:
-  - Labeled subset (balanced 10 per class) via `Subset`
-  - Unlabeled subset is the complement
-  - Dedicated loaders for labeled, unlabeled, and test sets[1]
+* Dataset: MNIST, with **100 labeled** and **59 900 unlabeled** training images[1]
+* Hardware: single **NVIDIA L4 GPU**, CUDA enabled[1]
+* Framework: **PyTorch** - Reproducibility:
+* Fixed random seed (Python, NumPy, torch, CUDA, deterministic cuDNN)[1]
+
+
+* Data loaders:
+* Labeled subset (balanced 10 per class) via `Subset`
+* Unlabeled subset is the complement
+* Dedicated loaders for labeled, unlabeled, and test sets[1]
+
+
 
 ### Training Control
 
-- Optimizer: Adam (for both CNN and SGAN)[1]
-- Early stopping:
-  - Best model at **epoch 62**, training stopped at **epoch 77** (no further improvement)[1]
-- Best models stored as:
-  - `best_discriminator_sgan.pt`  
-  - `best_generator_sgan.pt`[1]
+* Optimizer: Adam (for both CNN and SGAN)[1]
+* Early stopping:
+* Best model at **epoch 62**, training stopped at **epoch 77** (no further improvement)[1]
 
-***
+
+* Best models stored as:
+* `best_discriminator_sgan.pt`
+* `best_generator_sgan.pt`[1]
+
+
+
+---
 
 ## Results
 
 ### Quantitative Performance
 
-| Model                           | Labeled Data | Unlabeled Data | Best Test Accuracy |
-|---------------------------------|-------------:|---------------:|-------------------:|
-| **Baseline CNN (Supervised)**   | 100          | 0              | 82.73%             |
-| **SGAN (K+1 + Feature Matching)** | 100        | 59 900         | **97.82%**         | [1]
+| Model | Labeled Data | Unlabeled Data | Best Test Accuracy |
+| --- | --- | --- | --- |
+| **Baseline CNN (Supervised)** | 100 | 0 | 82.73% |
+| **SGAN (K+1 + Feature Matching)** | 100 | 59 900 | **97.82%** |
 
 Key observations:[1]
 
-- Accuracy improves from ~86.6% at epoch 1 to >95% within the first 10 epochs.  
-- Peak accuracy: **97.82%** on MNIST test set (10 000 images).  
-- Accuracy stabilizes in a narrow band after convergence, indicating stable training.  
+* Accuracy improves from ~86.6% at epoch 1 to >95% within the first 10 epochs.
+* Peak accuracy: **97.82%** on MNIST test set (10 000 images).
+* Accuracy stabilizes in a narrow band after convergence, indicating stable training.
 
 ### Discussion
 
-- The **baseline CNN** overfits the 100 labels and cannot generalize as well.[1]
-- The **SGAN**:
-  - Exploits the **structure of unlabeled data** through adversarial learning.  
-  - Learns richer internal representations via the K+1 discriminator.  
-  - Achieves performance close to fully supervised MNIST using **<0.2% labeled data**.[1]
-- **Feature matching** acts as a strong regularizer and is crucial for stability.[1]
-- **Early stopping** is essential in such low-label regimes to avoid overfitting.[1]
+* The **baseline CNN** overfits the 100 labels and cannot generalize as well.[1]
+* The **SGAN**:
+* Exploits the **structure of unlabeled data** through adversarial learning.
+* Learns richer internal representations via the K+1 discriminator.
+* Achieves performance close to fully supervised MNIST using **<0.2% labeled data**.[1]
 
-***
+
+* **Feature matching** acts as a strong regularizer and is crucial for stability.[1]
+* **Early stopping** is essential in such low-label regimes to avoid overfitting.[1]
+
+---
 
 ## Code Structure
 
@@ -183,11 +183,12 @@ mnist_100labels_gan/
 │   └── results.json         # Logged metrics and best scores
 └── report/
     └── report_neurips.pdf   # Final scientific report (NeurIPS format)
+
 ```
 
 *(Adapter les chemins exacts à la structure réelle si besoin.)*[1]
 
-***
+---
 
 ## How to Run
 
@@ -196,6 +197,7 @@ mnist_100labels_gan/
 ```bash
 git clone <URL_DU_REPO>.git
 cd mnist_100labels_gan
+
 ```
 
 2. **Create environment & install dependencies**
@@ -205,58 +207,65 @@ python -m venv .venv
 source .venv/bin/activate  # ou: .venv\Scripts\activate sous Windows
 
 pip install -r requirements.txt
+
 ```
 
 3. **Train the baseline CNN**
 
 ```bash
 python -m training.train_baseline
+
 ```
 
 4. **Train the Semi-Supervised GAN**
 
 ```bash
 python -m training.train_semisup_gan
+
 ```
 
 or, with a single entry point if you l’as prévu:
 
 ```bash
 python main.py
+
 ```
 
 5. **Inspect results**
 
-- Metrics and logs: `experiments/results.json`  
-- Best models: `best_discriminator_sgan.pt`, `best_generator_sgan.pt`  
-- Generated samples and curves: figures saved in the experiments/report folders.[1]
+* Metrics and logs: `experiments/results.json`
+* Best models: `best_discriminator_sgan.pt`, `best_generator_sgan.pt`
+* Generated samples and curves: figures saved in the experiments/report folders.[1]
 
-***
+---
 
 ## Reproducibility & Evaluation
 
-- **Seed control**: all experiments use a fixed seed (`42`) applied to Python, NumPy, torch, and CUDA; cuDNN is set to deterministic.[1]
-- **Classifier evaluation**:
-  - Only the first K logits (0–9) of the discriminator are used for classification.  
-  - Accuracy and confusion matrix computed on the standard MNIST test set (10 000 images).[1]
-- The discriminator can be reused as:
-  - A standalone classifier  
-  - A feature extractor  
-  - A pretrained backbone for other tasks[1]
+* **Seed control**: all experiments use a fixed seed (`42`) applied to Python, NumPy, torch, and CUDA; cuDNN is set to deterministic.[1]
+* **Classifier evaluation**:
+* Only the first K logits (0–9) of the discriminator are used for classification.
+* Accuracy and confusion matrix computed on the standard MNIST test set (10 000 images).[1]
 
-***
+
+* The discriminator can be reused as:
+* A standalone classifier
+* A feature extractor
+* A pretrained backbone for other tasks[1]
+
+
+
+---
 
 ## References
 
-- T. Salimans et al., **“Improved Techniques for Training GANs”**, NeurIPS 2016.[1]
-- I. Goodfellow et al., **“Generative Adversarial Networks”**, NeurIPS 2014.[1]
-- Y. LeCun et al., **“Gradient-Based Learning Applied to Document Recognition”**, Proc. IEEE 1998.[1]
-- **PyTorch documentation** — https://pytorch.org/docs[1]
-- **MNIST dataset** — http://yann.lecun.com/exdb/mnist[1]
+* T. Salimans et al., **“Improved Techniques for Training GANs”**, NeurIPS 2016.[1]
+* I. Goodfellow et al., **“Generative Adversarial Networks”**, NeurIPS 2014.[1]
+* Y. LeCun et al., **“Gradient-Based Learning Applied to Document Recognition”**, Proc. IEEE 1998.[1]
+* **PyTorch documentation** — [https://pytorch.org/docs](https://pytorch.org/docs)[1]
+* **MNIST dataset** — [http://yann.lecun.com/exdb/mnist](http://yann.lecun.com/exdb/mnist)[1]
 
 ---
 
 *Produced with rigor and passion by the GACKOU–LOUNISSI–NIRMAL–SAILLARD team.*
 
-[1](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/41992518/44a2b15d-9487-45b2-8ad4-f916632c1c05/Main.html)
-[2](https://img.shields.io/badge/University-Paris%20Cit)
+Would you like me to help you generate a `requirements.txt` file or a specific README section for your model results?
