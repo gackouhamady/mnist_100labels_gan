@@ -227,11 +227,11 @@ python -m training.train_semisup_gan
 
 ```
 
-or, with a single entry point if you l’as prévu:
+or, with a single entry point :
 
 ```bash
-python main.py
-
+- python main.py
+- or python run_all.py
 ```
 
 5. **Inspect results**
