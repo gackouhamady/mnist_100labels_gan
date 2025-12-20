@@ -9,10 +9,10 @@
 - Brice SAILLARD (brice.saillard.bs@gmail.com)
 - Hamady GACKOU (hamady.gackou@etu.u-paris.fr)
 
-
+---
 - **Supervisor: Blaise Hanczar** , Professeur  à  L'université Paris Sacaly
 
-
+---
 **Dataset & Setting**
 
 * MNIST: 60 000 train / 10 000 test
@@ -40,6 +40,8 @@ This allows the model to **leverage the structure of unlabeled data** in additio
 
 ## Model Architectures
 
+--- 
+
 ### 1.  Baseline Supervised CNN 
 
 <p align="center">
@@ -55,6 +57,7 @@ A compact CNN trained **only on the 100 labeled samples** serves as the supervis
 * Linear → 128 + ReLU + Dropout(0.3)
 * Linear → 10 logits (digits 0–9)[1]
 
+---
 
 ### 2.  Semi-Supervised GAN: Generator and K+1 Discriminator 
 <p align="center">
@@ -67,9 +70,6 @@ The **discriminator** outputs **K+1 logits**:
 
 * 10 logits for real classes (0–9)
 * 1 logit for the “fake” class[1]
-
-Architecture:
-
 * Conv2d(1 → 64) + LeakyReLU + MaxPool2d
 * Conv2d(64 → 128) + LeakyReLU + MaxPool2d
 * Flatten → Linear(128×7×7 → 256) + LeakyReLU
