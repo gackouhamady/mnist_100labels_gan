@@ -1,7 +1,3 @@
-Voici une version **exceptionnelle** et **fidèle** de votre projet, présentée sous forme de fichier Markdown (`README.md` ou `Main.md`) parfaitement structurée pour votre dépôt. Elle intègre vos noms, votre programme de Master à l'Université Paris Cité, ainsi que le plan détaillé du rapport final.
-
----
-
 # # Semi-Supervised GAN for MNIST (100 Labels)
 
 <p align="center">
@@ -13,7 +9,7 @@ Voici une version **exceptionnelle** et **fidèle** de votre projet, présentée
 
 ---
 
-## 👨‍🔬 Équipe Projet
+## Project Team
 
 **Université Paris Cité — Master 2 Machine Learning for Data Science**
 
@@ -22,111 +18,104 @@ Voici une version **exceptionnelle** et **fidèle** de votre projet, présentée
 * **Brice SAILLARD** ([brice.saillard.bs@gmail.com](mailto:brice.saillard.bs@gmail.com))
 * **Hamady GACKOU** ([hamady.gackou@etu.u-paris.fr](mailto:hamady.gackou@etu.u-paris.fr))
 
-**Superviseur :** Blaise Hanczar
+**Supervisor:** Blaise Hanczar
 
 ---
 
-## 🎯 Résumé du Projet
+##  Project Summary
 
-Ce projet explore la puissance de l'apprentissage **semi-supervisé** à l'aide de réseaux antagonistes génératifs (GAN). Dans un scénario où seulement **100 images étiquetées** (10 par classe) sont disponibles sur les 60 000 du dataset MNIST, nous démontrons comment un **Semi-Supervised GAN (SGAN)** peut surpasser drastiquement un CNN classique.
+This project explores the power of **semi-supervised learning** using Generative Adversarial Networks (GAN). In a scenario where only **100 labeled images** (10 per class) are available out of the 60,000 in the MNIST dataset, we demonstrate how a **Semi-Supervised GAN (SGAN)** can drastically outperform a classic CNN.
 
-### La Solution : Discriminateur 
+### The Solution: Discriminator
 
-Le cœur de notre approche réside dans la modification du discriminateur pour qu'il ne se contente pas de distinguer le "vrai" du "faux", mais qu'il agisse comme un classificateur à 11 classes :
+The core of our approach lies in modifying the discriminator so that it does not just distinguish "real" from "fake," but acts as an 11-class classifier:
 
-* **Classes 0-9 :** Chiffres manuscrits réels.
-* **Classe 10 :** Images générées ("Fake").
+* **Classes 0-9:** Real handwritten digits.
+* **Class 10:** Generated images ("Fake").
 
 ---
 
-## 📊 Performances Comparatives
+##  Comparative Performance
 
-| Modèle | Données Étiquetées | Données Non-Étiquetées | Précision Test (%) |
+| Model | Labeled Data | Unlabeled Data | Test Accuracy (%) |
 | --- | --- | --- | --- |
-| **Baseline CNN** | 100 | Non | 82.73% |
+| **Baseline CNN** | 100 | None | 82.73% |
 | **SGAN (K+1 + Feature Matching)** | 100 | **59,900** | **97.82%** |
 
 ---
 
-## 🛠 Structure du Code & Pipeline
+## 🛠 Code Structure & Pipeline
 
 ```bash
 mnist_100labels_gan/
 ├── models/
-│   ├── cnn_baseline.py       # Architecture du modèle témoin
-│   ├── gan_generator.py      # Générateur DCGAN-style
-│   └── gan_discriminator.py  # Discriminateur (K+1 logits)
+│   ├── cnn_baseline.py       # Baseline model architecture
+│   ├── gan_generator.py      # DCGAN-style Generator
+│   └── gan_discriminator.py  # Discriminator (K+1 logits)
 ├── training/
-│   ├── train_baseline.py     # Script d'entraînement supervisé
-│   └── train_semisup_gan.py  # Logique SGAN + Feature Matching
+│   ├── train_baseline.py     # Supervised training script
+│   └── train_semisup_gan.py  # SGAN logic + Feature Matching
 ├── report/
-│   └── report_neurips.pdf    # Rapport scientifique final
-└── main.py                   # Point d'entrée unique
+│   └── report_neurips.pdf    # Final scientific report
+└── main.py                   # Single entry point
 
 ```
 
 ---
 
-## 📝 Plan de Rapport (Structure Scientifique)
+##  Report Plan (Scientific Structure)
 
-Voici le plan rigoureux adopté pour la rédaction de notre article (format NeurIPS) :
+Below is the rigorous plan adopted for the writing of our article (NeurIPS format):
 
 1. **Introduction**
-* Problématique du coût de l'étiquetage.
-* Motivation pour l'utilisation des GANs en semi-supervisé.
+* The problem of labeling costs.
+* Motivation for using GANs in semi-supervised learning.
 
 
-2. **État de l'art & Baseline**
-* Description du CNN supervisé.
-* Analyse du sur-apprentissage (overfitting) en régime de faibles données.
+2. **State of the Art & Baseline**
+* Description of the supervised CNN.
+* Analysis of overfitting in low-data regimes.
 
 
-3. **Méthodologie SGAN**
-* Architecture du classificateur .
-* Formulation des fonctions de perte (Supervised vs Unsupervised).
-* **Feature Matching :** Technique de stabilisation de l'entraînement du Générateur.
+3. **SGAN Methodology**
+*  classifier architecture.
+* Formulation of loss functions (Supervised vs. Unsupervised).
+* **Feature Matching:** Technique for stabilizing Generator training.
 
 
-4. **Détails d'Implémentation**
-* Hyperparamètres (Adam, learning rates, batch sizes).
-* Gestion du dataset MNIST (Split 100/59,900).
+4. **Implementation Details**
+* Hyperparameters (Adam, learning rates, batch sizes).
+* MNIST dataset management (100/59,900 split).
 
 
-5. **Résultats Expérimentaux**
-* Courbes de convergence et d'accuracy.
-* Visualisation des images générées par le SGAN.
+5. **Experimental Results**
+* Convergence and accuracy curves.
+* Visualization of images generated by the SGAN.
 
 
-6. **Discussion & Analyse**
-* Pourquoi le SGAN généralise-t-il mieux ?
-* Rôle de l'information structurelle des données non-étiquetées.
+6. **Discussion & Analysis**
+* Why does the SGAN generalize better?
+* The role of structural information from unlabeled data.
 
 
 7. **Conclusion & Perspectives**
-* Extensibilité à des datasets plus complexes (CIFAR-10).
+* Extensibility to more complex datasets (CIFAR-10).
 
 
-8. **Références & Annexes**
+8. **References & Appendices**
 
 ---
 
-## 🚀 Comment Reproduire
+##  How to Reproduce
 
-1. Cloner le dépôt.
-2. Installer les dépendances : `pip install -r requirements.txt`.
-3. Lancer l'entraînement complet :
+1. Clone the repository.
+2. Run the full training:
 ```bash
-python main.py --mode all --labels 100
-
+python main.py
 ```
-
-
-4. Consulter les résultats dans `/experiments/results.json`.
-
+3. View results in `/experiments/results.json`.
 ---
 
-<p align="center"><i>Réalisé avec rigueur et passion par l'équipe Gackou-Lounissi-Nirmal-Saillard.</i></p>
+<p align="center"><i>Produced with rigor and passion by the GACKOU-LOUNISSI-NIRMAL-SAILLARD team.</i></p>
 
 ---
-
-Souhaitez-vous que je développe davantage une section spécifique du rapport (par exemple, la démonstration mathématique de la perte du discriminateur) ?
