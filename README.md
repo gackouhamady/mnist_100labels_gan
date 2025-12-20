@@ -1,23 +1,22 @@
-# Semi-Supervised GAN for MNIST with 100 Labels
+# Semi-Supervised GAN for MNIST (100 Labels)
+<p align="center"> <img alt="University Paris Cité" src="https://img.shields.io/badge/University-Paris%20Cité-6f42c1?style=for-the-badge&logo=academia&logoColor=white"> <img alt="Master ML for Data Science" src="https://img.shields.io/badge/Master-Machine%20Learning%20for%20Data%20Science-1976D2?style=for-the-badge&logo=python&logoColor=white"> <img alt="Deep Learning Project" src="https://img.shields.io/badge/Project-Deep%20Learning%20-%20Semi--Supervised%20GAN-FF9800?style=for-the-badge&logo=jupyter&logoColor=white"> <img alt="Academic Year" src="https://img.shields.io/badge/Year-2025%2F2026-009688?style=for-the-badge&logo=googlecalendar&logoColor=white"> </p>
 
-<p align="center">
-<img alt="University Paris Cité" src="[https://img.shields.io/badge/University-Paris%20Cité-6f42c1?style=for-the-badge&logo=academia&logoColor=white](https://img.shields.io/badge/University-Paris%20Cité-6f42c1?style=for-the-badge&logo=academia&logoColor=white)">
-<img alt="Master ML for Data Science" src="[https://img.shields.io/badge/Master-Machine%20Learning%20for%20Data%20Science-1976D2?style=for-the-badge&logo=python&logoColor=white](https://img.shields.io/badge/Master-Machine%20Learning%20for%20Data%20Science-1976D2?style=for-the-badge&logo=python&logoColor=white)">
-<img alt="Deep Learning Project" src="[https://img.shields.io/badge/Project-Deep%20Learning%20-%20Semi--Supervised%20GAN-FF9800?style=for-the-badge&logo=jupyter&logoColor=white](https://img.shields.io/badge/Project-Deep%20Learning%20-%20Semi--Supervised%20GAN-FF9800?style=for-the-badge&logo=jupyter&logoColor=white)">
-<img alt="Academic Year" src="[https://img.shields.io/badge/Year-2025%2F2026-009688?style=for-the-badge&logo=googlecalendar&logoColor=white](https://img.shields.io/badge/Year-2025%2F2026-009688?style=for-the-badge&logo=googlecalendar&logoColor=white)">
-</p>
+**Project Title:** Semi-Supervised GAN (K+1 Discriminator) for Low-Label Image Classification[1]
 
----
+**Université Paris Cité — Master 2 Machine Learning for Data Science**
 
-## Project Information
+## Project Team
 
-**Université Paris Cité — Master 2 Machine Learning for Data Science** **Course:** Deep Learning
+- Manel LOUNISSI (manel2.lounissi@gmail.com)
 
-**Project:** Semi-Supervised GAN (K+1 Discriminator) for Low-Label Image Classification[1]
+- Sandeep-Singh NIRMAL (nirmalsinghsandeep@gmail.com)
 
-**Team**
+- Brice SAILLARD (brice.saillard.bs@gmail.com)
 
-* Manel LOUNISSI – *manel2.lounissi@gmail.com* - Sandeep-Singh NIRMAL – *nirmalsinghsandeep@gmail.com* - Brice SAILLARD – *brice.saillard.bs@gmail.com* - Hamady GACKOU – *hamady.gackou@etu.u-paris.fr* **Supervisor:** Blaise Hanczar[1]
+- Hamady GACKOU (hamady.gackou@etu.u-paris.fr)
+
+- Supervisor: Blaise Hanczar
+
 
 **Dataset & Setting**
 
@@ -264,7 +263,3 @@ python main.py
 * **PyTorch documentation** — [https://pytorch.org/docs](https://pytorch.org/docs)[1]
 * **MNIST dataset** — [http://yann.lecun.com/exdb/mnist](http://yann.lecun.com/exdb/mnist)[1]
 ---
-
-*Produced with rigor and passion by the GACKOU–LOUNISSI–NIRMAL–SAILLARD team.*
-
-Would you like me to help you generate a `requirements.txt` file or a specific README section for your model results?
