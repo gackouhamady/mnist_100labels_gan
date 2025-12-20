@@ -161,7 +161,7 @@ Key observations:[1]
 
 ```bash
 mnist_100labels_gan/
-├── main.py                  # Main notebook/script entry point
+├── main.py                  # Main script entry point
 ├── models/
 │   ├── cnn_baseline.py      # Baseline supervised CNN
 │   ├── gan_generator.py     # SGAN generator
@@ -170,19 +170,14 @@ mnist_100labels_gan/
 │   ├── train_baseline.py    # Supervised CNN training
 │   └── train_semisup_gan.py # SGAN training (losses + feature matching)
 ├── utils/
-│   ├── data_utils.py        # Dataset splits, loaders, visualization
 │   ├── metrics.py           # Accuracy, confusion matrix, evaluation
 │   └── seed_utils.py        # Reproducibility utilities
 ├── experiments/
-│   └── results.json         # Logged metrics and best scores
+│   └──         # Logged metrics and best scores
 └── report/
-    └── report_neurips.pdf   # Final scientific report (NeurIPS format)
+    └──                  # Final scientific report (NeurIPS format)
 
 ```
-
-*(Adapter les chemins exacts à la structure réelle si besoin.)*[1]
-
----
 
 ## How to Run
 
@@ -227,7 +222,7 @@ python main.py
 
 5. **Inspect results**
 
-* Metrics and logs: `experiments/results.json`
+* Metrics and logs: `experiments`
 * Best models: `best_discriminator_sgan.pt`, `best_generator_sgan.pt`
 * Generated samples and curves: figures saved in the experiments/report folders.[1]
 
