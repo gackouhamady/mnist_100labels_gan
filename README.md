@@ -2,7 +2,7 @@
 <p align="center"> <img alt="University Paris Cité" src="https://img.shields.io/badge/University-Paris%20Cité-6f42c1?style=for-the-badge&logo=academia&logoColor=white"> <img alt="Master ML for Data Science" src="https://img.shields.io/badge/Master-Machine%20Learning%20for%20Data%20Science-1976D2?style=for-the-badge&logo=python&logoColor=white"> <img alt="Deep Learning Project" src="https://img.shields.io/badge/Project-Deep%20Learning%20-%20Semi--Supervised%20GAN-FF9800?style=for-the-badge&logo=jupyter&logoColor=white"> <img alt="Academic Year" src="https://img.shields.io/badge/Year-2025%2F2026-009688?style=for-the-badge&logo=googlecalendar&logoColor=white"> </p>
 
 
-## Project Team
+## Project Team :
 
 - Manel LOUNISSI (manel2.lounissi@gmail.com)
 - Sandeep-Singh NIRMAL (nirmalsinghsandeep@gmail.com)
@@ -10,7 +10,7 @@
 - Hamady GACKOU (hamady.gackou@etu.u-paris.fr)
 
 
-- **Supervisor: Blaise Hanczar** , Professeur  à  L'Université Paris Sacaly
+- **Supervisor: Blaise Hanczar** , Professeur  à  L'université Paris Sacaly
 
 
 **Dataset & Setting**
@@ -40,7 +40,12 @@ This allows the model to **leverage the structure of unlabeled data** in additio
 
 ## Model Architectures
 
-### Baseline Supervised CNN 
+### 1.  Baseline Supervised CNN 
+
+<p align="center">
+  <img src="baseline_CNN.png" alt="Baseline supervised CNN" width="48%"/>
+</p>
+
 
 A compact CNN trained **only on the 100 labeled samples** serves as the supervised baseline.[1]
 
@@ -51,8 +56,12 @@ A compact CNN trained **only on the 100 labeled samples** serves as the supervis
 * Linear → 10 logits (digits 0–9)[1]
 
 
+### 2.  Semi-Supervised GAN: Generator and K+1 Discriminator 
+<p align="center">
+  <img src="Gen_Dis_.png" alt="SGAN generator + K+1 discriminator" width="48%"/>
+</p>
 
-### SGAN Discriminator (K+1 Classes)
+#### SGAN Discriminator (K+1 Classes)
 
 The **discriminator** outputs **K+1 logits**:
 
@@ -67,7 +76,7 @@ Architecture:
 * Final Linear(256 → 11)
 * Optionally returns intermediate **features** for feature matching[1]
 
-### SGAN Generator
+#### SGAN Generator
 
 The **generator** maps a latent vector  to a 28×28 MNIST image:[1]
 
