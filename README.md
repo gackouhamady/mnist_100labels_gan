@@ -1,6 +1,11 @@
-# Semi-Supervised GAN(K+1 Discriminator)  for MNIST : Low-Label Image Classification (100 Labels)
+<h1 align="center">
+  Semi-Supervised GAN for MNIST with 100 Labels: K+1 Discriminator and Feature-Matching for Low-Label Digit Classification
+</h1>
+
+---
 <p align="center"> <img alt="University Paris Cité" src="https://img.shields.io/badge/University-Paris%20Cité-6f42c1?style=for-the-badge&logo=academia&logoColor=white"> <img alt="Master ML for Data Science" src="https://img.shields.io/badge/Master-Machine%20Learning%20for%20Data%20Science-1976D2?style=for-the-badge&logo=python&logoColor=white"> <img alt="Deep Learning Project" src="https://img.shields.io/badge/Project-Deep%20Learning%20-%20Semi--Supervised%20GAN-FF9800?style=for-the-badge&logo=jupyter&logoColor=white"> <img alt="Academic Year" src="https://img.shields.io/badge/Year-2025%2F2026-009688?style=for-the-badge&logo=googlecalendar&logoColor=white"> </p>
 
+---
 
 ## Project Team :
 
