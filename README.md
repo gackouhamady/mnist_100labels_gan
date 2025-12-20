@@ -1,4 +1,4 @@
-# # Semi-Supervised GAN for MNIST (100 Labels)
+## Semi-Supervised GAN for MNIST (100 Labels)
 
 <p align="center">
 <img alt="University Paris Cité" src="https://img.shields.io/badge/University-Paris%20Cité-6f42c1?style=for-the-badge&logo=academia&logoColor=white">
